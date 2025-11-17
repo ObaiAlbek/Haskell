@@ -1,10 +1,5 @@
 # Haskell-Klausur 1 - Umfassende Prüfung
 
-**Name:** ________________________  
-**Matrikelnummer:** ________________________  
-**Bearbeitungszeit:** 120 Minuten  
-**Punkte:** 100
-
 ## Aufgabe 1: Theoretische Grundlagen (15 Punkte)
 
 **a)** Erklären Sie die Konzepte "lazy evaluation" und "immutability" in Haskell und nennen Sie jeweils zwei Vor- und Nachteile.
