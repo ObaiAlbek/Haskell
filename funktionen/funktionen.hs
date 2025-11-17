@@ -300,7 +300,14 @@ myZip (x:xs) (y:ys) = (x,y) : myZip xs ys
 prime :: Int -> [Int]
 prime zahl = [x | x <- [2..zahl], all ((/=0) . (x `mod`)) [2..x-1]]
 
+skalarprodukt :: [Int] ->[Int] -> Int
+skalarprodukt [] _ = 0
+skalarprodukt _ [] = 0
+skalarprodukt (x:xs) (y:ys) = x * y + skalarprodukt xs ys
+
+skalarprodukt2 :: [Int] ->[Int] -> Int
+skalarprodukt2 list1 list2 = sum [x * y| (x,y) <- zip  list1 list2]
 
 main :: IO()
-main = print (prime 13 )
+main = print (skalarprodukt2 [1,2,3] [4,5,6])
 
