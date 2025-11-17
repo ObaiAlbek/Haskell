@@ -1,9 +1,3 @@
-import Data.IntMap.Merge.Lazy (merge)
-import Data.List
-import Data.Time (midday)
-import Data.Monoid (First(First))
-import Text.XHtml (height)
-import Data.Text.Internal.Fusion (Stream)
 import GHC.Base (VecElem(Int16ElemRep))
 {- berechneGehalt :: Int -> Int
 berechneGehalt punkte = 
@@ -14,7 +8,7 @@ berechneGehalt punkte =
         (punkte * faktor) + bonus -}
 
 
-in_range min max x = ilb && iub 
+inRange min max x = ilb && iub 
     where
         ilb = min <= x
         iub = max >= x
@@ -303,14 +297,10 @@ myZip _ [] = []
 myZip (x:xs) (y:ys) = (x,y) : myZip xs ys
 
 
-names = ["Oliver", "Emma", "Liam", "Ava", "Noah", "Sophia", "James", "Mia", "Elijah", "Isabella"]
+prime :: Int -> [Int]
+prime zahl = [x | x <- [2..zahl], all ((/=0) . (x `mod`)) [2..x-1]]
 
-ages = [25, 30, 22, 29, 35, 28, 40, 26, 33, 31]
-
--- we are looking for the UPPERCASE names of the two oldest persons whose names ends with an a sorted alphabetically"
-
-extractedNames = []
 
 main :: IO()
-main = print (myZip [1,2,3] ["one","two","three","Four"])
+main = print (prime 13 )
 
