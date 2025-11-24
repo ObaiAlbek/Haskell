@@ -36,6 +36,25 @@ dotProduckt [] _ = 0
 dotProduckt (x:xs) (y:ys) = x*y + dotProduckt xs ys
 
 
+-- assumption: both input lists are already sorted
+mergeSort :: (Ord a) => [a] -> [a] -> [a]
+mergeSort [] a = a 
+mergeSort a [] = a
+mergeSort(x:xs)(y:ys) = if x > y then x : mergeSort xs (y:ys) else y : mergeSort (x:xs) ys
+
+merge :: (Ord a) => [a] -> [a]
+merge [] = []
+merge [x] = [x]
+merge a = mergeSort (merge $ take half a) (merge $ drop half a)
+  where
+    half = length a `div` 2
+
+
+
+
+-- man kann hier smalles index machen
+
+
 
 main :: IO()
 main = print (dotProduckt [1,2,3] [4,5,6])
