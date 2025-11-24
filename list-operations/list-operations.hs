@@ -6,6 +6,7 @@
 import Data.Char (toUpper)
 import Data.List (sort, sortOn)
 import Test.HUnit
+import Data.Tuple (fst)
 
 names = ["Oliver", "Emma", "Liam", "Ava", "Noah", "Sophia", "James", "Mia", "Elijah", "Isabella"]
 
@@ -28,7 +29,15 @@ reverseList = reverse sortAge --[("JAMES",40),("NOAH",35),("ELIJAH",33),("ISABEL
 
 onlyNames = take 2 $ [name| (name,_) <- reverseList, last name == 'A' ]
 
-extractedNames = reverse onlyNames
+-- extractedNames = reverse onlyNames
+
+-- oder Kürzer Weg:
+extractedNames = 
+    sort
+    $ map (map toUpper . fst)
+    $ take 2 $ reverse  $ sortOn snd
+    filter ((== 'a').last.fst)  -- mit filter Lambda filter(\(x,_)->last x == 'a')
+    $ zip names ages
 
 test1 = Test.HUnit.TestCase (assertEqual "ExtractedNames" ["EMMA", "ISABELLA"] extractedNames)
 
