@@ -308,6 +308,14 @@ skalarprodukt (x:xs) (y:ys) = x * y + skalarprodukt xs ys
 skalarprodukt2 :: [Int] ->[Int] -> Int
 skalarprodukt2 list1 list2 = sum [x * y| (x,y) <- zip  list1 list2]
 
+
+summeToN :: Int -> [Int]
+summeToN 0 = []
+summeToN n = 0+n : summeToN(n-1)
+
+
+
+
 main :: IO()
-main = print (skalarprodukt2 [1,2,3] [4,5,6])
+main = print ( reverse $ summeToN 10)
 
